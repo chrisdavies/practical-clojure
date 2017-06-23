@@ -20,3 +20,15 @@ This is a collection of simple projects, each aiming to demonstrate how to use C
 - Credit card processing via Stripe
 - Debugging
 - Date/time manipulation
+
+
+## Contributing
+
+If you want to contribute an example, create a sub-folder for that example and give it a nice, tutorial-like readme explaining:
+
+- What the example does
+- Why you might want to do it
+- How to go about doing it
+- Why this approach is preerable to others
+
+Then, send me a pull request.
