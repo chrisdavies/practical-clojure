@@ -1,0 +1,2 @@
+{:db "replace with your db connection string"
+ :note "this file should only have example data, NEVER real configuration"}
