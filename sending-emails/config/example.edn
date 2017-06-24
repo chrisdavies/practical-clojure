@@ -1,6 +1,12 @@
-{:smtp {:host "smtp.mailtrap.io"
-        :port 465
-        :user "your user name"
-        :pass "your password"
-        :ssl false}
- :letter-opener nil} ; To launch emails in FireFox, set this to "open -a /Applications/Firefox.app"
+;; To launch emails in a browser, use this config:
+;; :mailer {:type :letter-opener
+;;          :cmd "open -a /Applications/Firefox.app"}
+;;
+;; To disable mailing, (e.g. for testing) use this config:
+;; :mailer {:type :none}
+{:mailer {:type :smtp
+          :host "smtp.mailtrap.io"
+          :port 465
+          :user "your user name"
+          :pass "your password"
+          :ssl false}}

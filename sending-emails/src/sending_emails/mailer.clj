@@ -6,7 +6,7 @@
 ;; Launches an email in a web browser rather than sending it... This could
 ;; and maybe should generate a new temporary file per email, but for now,
 ;; we'll just reuse the one file.
-(defn- launch-email [letter-opener content]
+(defn- launch-email [cmd content]
   (let [rt (Runtime/getRuntime)
         file-name "./target/email.html"]
     (spit file-name
@@ -17,7 +17,7 @@
                    "<label style=\"display: block\">Email metadata</label>"
                    (assoc content :body (rest (:body content)))
                    "</footer>")))
-    (.exec rt (str letter-opener " " file-name))))
+    (.exec rt (str cmd " " file-name))))
 
 
 (defn send-message
@@ -29,8 +29,8 @@
            :body [{:type \"text/html\"
                    :content \"<b>Test!</b>\"}})"
   [content]
-  (let [smtp (:smtp env)
-        letter-opener (:letter-opener env)]
-    (if (nil? letter-opener)
-        (postal/send-message smtp content)
-        (launch-email letter-opener content))))
+  (let [opts (:mailer env)]
+    (case (:type opts)
+      :smtp          (postal/send-message opts content)
+      :letter-opener (launch-email (:cmd opts) content)
+      :none          nil)))
