@@ -1,0 +1,36 @@
+(ns sending-emails.mailer
+  (:require [postal.core :as postal]
+            [config.core :refer [env]])
+  (:gen-class))
+
+;; Launches an email in a web browser rather than sending it... This could
+;; and maybe should generate a new temporary file per email, but for now,
+;; we'll just reuse the one file.
+(defn- launch-email [letter-opener content]
+  (let [rt (Runtime/getRuntime)
+        file-name "./target/email.html"]
+    (spit file-name
+          (-> (:body content)
+              first
+              (:content)
+              (str "<footer style=\"border-top: 1px solid #AAA; margin-top: 24px; padding: 24px; opacity: 0.75; line-height: 1.4\">"
+                   "<label style=\"display: block\">Email metadata</label>"
+                   (assoc content :body (rest (:body content)))
+                   "</footer>")))
+    (.exec rt (str letter-opener " " file-name))))
+
+
+(defn send-message
+  "Sends an email using the smtp settings specified in config.edn.
+  content is a map that looks something like this:
+    (send {:from \"me@draines.com\"
+           :to \"foo@example.com\"
+           :subject \"Hi!\"
+           :body [{:type \"text/html\"
+                   :content \"<b>Test!</b>\"}})"
+  [content]
+  (let [smtp (:smtp env)
+        letter-opener (:letter-opener env)]
+    (if (nil? letter-opener)
+        (postal/send-message smtp content)
+        (launch-email letter-opener content))))

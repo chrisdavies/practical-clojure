@@ -3,8 +3,8 @@
 This is a collection of simple projects, each aiming to demonstrate how to use Clojure to accomplish relatively common tasks, such as:
 
 - [Per-environment configuration](./configuration)
+- [Sending emails](./sending-emails)
 - Session-based authentication
-- Sending emails
 - Sidekiq-like background processing
 - Generating HTML server-side
 - Generating HTML client-side with Reagent
@@ -24,11 +24,13 @@ This is a collection of simple projects, each aiming to demonstrate how to use C
 
 ## Contributing
 
-If you want to contribute an example, create a sub-folder for that example and give it a nice, tutorial-like readme explaining:
+If you want to contribute an example, create a sub-folder (e.g. `lein new app foo` for that example and give it a nice, tutorial-like readme explaining:
 
 - What the example does
 - Why you might want to do it
 - How to go about doing it
 - Why this approach is preerable to others
 
-Then, send me a pull request.
+Make the project do something awesome.
+
+Send me a pull request.

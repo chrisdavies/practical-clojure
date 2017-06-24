@@ -1,0 +1,6 @@
+{:smtp {:host "smtp.mailtrap.io"
+        :port 465
+        :user "your user name"
+        :pass "your password"
+        :ssl false}
+ :letter-opener nil} ; To launch emails in FireFox, set this to "open -a /Applications/Firefox.app"
