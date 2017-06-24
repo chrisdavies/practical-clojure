@@ -1,6 +1,6 @@
 # Practical Clojure
 
-This is a collection of simple projects, each aiming to demonstrate how to use Clojure to accomplish relatively common tasks, such as:
+This is a collection of simple projects, each aiming to demonstrate-- very briefly-- how to use Clojure to accomplish relatively common tasks, such as:
 
 - [Per-environment configuration](./configuration)
 - [Sending emails](./sending-emails)
