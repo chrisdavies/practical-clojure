@@ -4,9 +4,9 @@ This is a collection of simple projects, each aiming to demonstrate-- very brief
 
 - [Per-environment configuration](./configuration)
 - [Sending emails](./sending-emails)
+- [Server-side templates](./server-side-templates)
 - Session-based authentication
 - Sidekiq-like background processing
-- Generating HTML server-side
 - Generating HTML client-side with Reagent
 - Server-side routing
 - Client-side routing
